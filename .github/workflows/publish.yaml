@@ -11,10 +11,24 @@ jobs:
       - name: 'Checkout'
         uses: 'actions/checkout@v3'
 
-      - id: 'auth'
+      - name: 'Set up Python 3.8'
+        uses: 'actions/setup-python@v2'
+        with:
+          python-version: '3.8'
+
+      - name: 'Install Poetry'
+        uses: 'snok/install-poetry@v1'
+
+      - name: 'Export requirements.txt'
+        run: |
+          poetry export -f requirements.txt --output requirements.txt --without-hashes
+
+      - name: 'Authenticate with Google Cloud'
+        id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
          credentials_json: '${{ secrets.CICD_SA_KEY }}'
 
-      - id: 'deploy'
+      - name: 'Deploy to Google App Engine'
+        id: 'deploy'
         uses: 'google-github-actions/deploy-appengine@v1'
