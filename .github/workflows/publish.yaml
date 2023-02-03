@@ -1,0 +1,20 @@
+on:
+  push:
+    branch:
+      - ci/deploy
+
+# this workflow will deploy the django application into google app engine
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: 'actions/checkout@v3'
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+         credentials_json: '${{ secrets.CICD_SA_KEY }}'
+
+      - id: 'deploy'
+        uses: 'google-github-actions/deploy-appengine@v1'
