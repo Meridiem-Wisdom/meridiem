@@ -3,7 +3,7 @@
 runtime: python38
 service: default
 instance_class: F2
-entrypoint: cd meridiem && python manage.py runserver
+entrypoint: cd meridiem && python manage.py runserver 0.0.0.0:$PORT
 handlers:
 - url: /.*
   script: auto
