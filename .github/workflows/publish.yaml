@@ -1,0 +1,40 @@
+on:
+  push:
+    branch:
+      - ci/deploy
+
+# only cancel the previous workflow if it is still in progress
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# this workflow will deploy the django application into google app engine
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: 'Checkout'
+        uses: 'actions/checkout@v3'
+
+      - name: 'Set up Python 3.8'
+        uses: 'actions/setup-python@v2'
+        with:
+          python-version: '3.8'
+
+      - name: 'Install Poetry'
+        uses: 'snok/install-poetry@v1'
+
+      - name: 'Export requirements.txt'
+        run: |
+          poetry export -f requirements.txt --output requirements.txt --without-hashes
+
+      - name: 'Authenticate with Google Cloud'
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+         credentials_json: '${{ secrets.CICD_SA_KEY }}'
+
+      - name: 'Deploy to Google App Engine'
+        id: 'deploy'
+        uses: 'google-github-actions/deploy-appengine@v1'
