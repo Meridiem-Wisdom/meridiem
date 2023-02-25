@@ -26,7 +26,10 @@ SECRET_KEY = "django-insecure-7@gingj!tfha@qa**)3*djc!3+xw951wa^)k1v5hdor+0qnok%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["meridiem-project.uc.r.appspot.com"]
+ALLOWED_HOSTS = ["meridiem-project.uc.r.appspot.com",
+                 "t.vichoko.cl",
+                 "tibia.vichoko.cl",
+                 "meridiem.vichoko.cl"]
 
 
 # Application definition
