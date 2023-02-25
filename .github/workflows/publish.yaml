@@ -63,8 +63,8 @@ jobs:
 
       - name: 'Build my.cnf'
         run: |
-          mkdir -p ~/.mysql
-          cd ~/.mysql
+          mkdir -p mysql
+          cd mysql
           echo "[client]" > my.cnf
           echo "user = ${{ secrets.DATABASE_USERNAME }}" >> my.cnf
           echo "password = ${{ secrets.DATABASE_PASSWORD }}" >> my.cnf
