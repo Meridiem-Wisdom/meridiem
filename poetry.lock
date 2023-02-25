@@ -67,6 +67,22 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-psdb-engine"
+version = "1.0.6"
+description = "Django PlanetScale database engine."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django_psdb_engine-1.0.6-py2.py3-none-any.whl", hash = "sha256:d6e60a5cda4c39525b577560ff3b379cf5eca37875408355c760ea17fbd4d5a3"},
+    {file = "django_psdb_engine-1.0.6.tar.gz", hash = "sha256:e04ff0fa110e5592883300191fa973b1f679ad001a6988b1fcd521a22a31ff33"},
+]
+
+[package.dependencies]
+django = ">=2.2"
+mysqlclient = ">=2.1.0"
+
+[[package]]
 name = "mysqlclient"
 version = "2.1.1"
 description = "Python interface to MySQL"
@@ -110,4 +126,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "0a1d1120ea1cada9e5d610505d11962c5594fc48b2e6947ac0058941c387dd8f"
+content-hash = "aa02a405c31245e7242d203b6eaf3e4084114b106c8860392c30cd56774736a2"
