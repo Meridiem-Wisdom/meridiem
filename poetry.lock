@@ -67,6 +67,39 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-psdb-engine"
+version = "1.0.6"
+description = "Django PlanetScale database engine."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django_psdb_engine-1.0.6-py2.py3-none-any.whl", hash = "sha256:d6e60a5cda4c39525b577560ff3b379cf5eca37875408355c760ea17fbd4d5a3"},
+    {file = "django_psdb_engine-1.0.6.tar.gz", hash = "sha256:e04ff0fa110e5592883300191fa973b1f679ad001a6988b1fcd521a22a31ff33"},
+]
+
+[package.dependencies]
+django = ">=2.2"
+mysqlclient = ">=2.1.0"
+
+[[package]]
+name = "mysqlclient"
+version = "2.1.1"
+description = "Python interface to MySQL"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "mysqlclient-2.1.1-cp310-cp310-win_amd64.whl", hash = "sha256:c1ed71bd6244993b526113cca3df66428609f90e4652f37eb51c33496d478b37"},
+    {file = "mysqlclient-2.1.1-cp311-cp311-win_amd64.whl", hash = "sha256:c812b67e90082a840efb82a8978369e6e69fc62ce1bda4ca8f3084a9d862308b"},
+    {file = "mysqlclient-2.1.1-cp38-cp38-win_amd64.whl", hash = "sha256:0d1cd3a5a4d28c222fa199002810e8146cffd821410b67851af4cc80aeccd97c"},
+    {file = "mysqlclient-2.1.1-cp39-cp39-win_amd64.whl", hash = "sha256:b355c8b5a7d58f2e909acdbb050858390ee1b0e13672ae759e5e784110022994"},
+    {file = "mysqlclient-2.1.1-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:996924f3483fd36a34a5812210c69e71dea5a3d5978d01199b78b7f6d485c855"},
+    {file = "mysqlclient-2.1.1-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:dea88c8d3f5a5d9293dfe7f087c16dd350ceb175f2f6631c9cf4caf3e19b7a96"},
+    {file = "mysqlclient-2.1.1.tar.gz", hash = "sha256:828757e419fb11dd6c5ed2576ec92c3efaa93a0f7c39e263586d1ee779c3d782"},
+]
+
+[[package]]
 name = "sqlparse"
 version = "0.4.3"
 description = "A non-validating SQL parser."
@@ -93,4 +126,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "4f9574f0654231ba166838d7014653d813e8866fbef0997cda2ff8a469f8674e"
+content-hash = "aa02a405c31245e7242d203b6eaf3e4084114b106c8860392c30cd56774736a2"
