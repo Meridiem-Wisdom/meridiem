@@ -1,6 +1,6 @@
 on:
   push:
-    branch:
+    branches:
       - main
 
 # only cancel the previous workflow if it is still in progress
