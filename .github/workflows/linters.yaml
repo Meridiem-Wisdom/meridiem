@@ -4,7 +4,7 @@ name: 'linters'
 on:
   pull_request:
     branches:
-      - main/-
+      - main
     paths:
       - '**.py'
       - '**.yaml'
