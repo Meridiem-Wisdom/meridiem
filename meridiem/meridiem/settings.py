@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,10 +25,12 @@ SECRET_KEY = "django-insecure-7@gingj!tfha@qa**)3*djc!3+xw951wa^)k1v5hdor+0qnok%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["meridiem-project.uc.r.appspot.com",
-                 "t.vichoko.cl",
-                 "tibia.vichoko.cl",
-                 "meridiem.vichoko.cl"]
+ALLOWED_HOSTS = [
+    "meridiem-project.uc.r.appspot.com",
+    "t.vichoko.cl",
+    "tibia.vichoko.cl",
+    "meridiem.vichoko.cl",
+]
 
 
 # Application definition
@@ -80,14 +81,13 @@ WSGI_APPLICATION = "meridiem.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django_psdb_engine",
-        'OPTIONS': {
-            'read_default_file': './mysql/my.cnf',
-            'charset': 'utf8mb4',
-            'use_unicode': True,
+        "OPTIONS": {
+            "read_default_file": "./mysql/my.cnf",
+            "charset": "utf8mb4",
+            "use_unicode": True,
         },
     }
 }
-
 
 
 # Password validation
@@ -97,9 +97,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
 ]
 
 
@@ -119,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

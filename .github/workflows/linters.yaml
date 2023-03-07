@@ -1,0 +1,65 @@
+# checks that both black and isort are happy
+name: 'linters'
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.py'
+      - '**.yaml'
+      - '**.toml'
+      - '**.lock'
+
+jobs:
+  linters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.event.pull_request.draft == false
+    steps:
+      - name: 'Checkout'
+        uses: 'actions/checkout@v3'
+
+      - name: 'Set up Python 3.8'
+        id: 'setup-python'
+        uses: 'actions/setup-python@v4'
+        with:
+          python-version: '3.8'
+
+      - name: 'Load cached Poetry installation'
+        id: 'cached-poetry'
+        uses: 'actions/cache@v3'
+        with:
+          path: /home/runner/.local/
+          key: poetry-0  # increment to reset cache
+
+      - name: 'Install Poetry'
+        if: steps.cached-poetry.outputs.cache-hit != 'true'
+        uses: 'snok/install-poetry@v1'
+        with:
+          virtualenvs-create: false
+          virtualenvs-in-project: false
+          installer-parallel: true
+
+      - name: 'Load cached venv'
+        id: 'cached-poetry-dependencies'
+        uses: 'actions/cache@v3'
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: 'Create Python Virtual Environment'
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+
+      - name: 'Install dependencies'
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: |
+          source .venv/bin/activate
+          poetry install --no-interaction --no-root
+
+      - name: 'Check linting'
+        run: |
+          source .venv/bin/activate
+          make format-check
