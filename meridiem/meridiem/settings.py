@@ -26,6 +26,7 @@ SECRET_KEY = "django-insecure-7@gingj!tfha@qa**)3*djc!3+xw951wa^)k1v5hdor+0qnok%
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "127.0.0.1",
     "meridiem-project.uc.r.appspot.com",
     "t.vichoko.cl",
     "tibia.vichoko.cl",
